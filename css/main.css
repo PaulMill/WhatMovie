@@ -12,7 +12,7 @@ blockquote{
   height:6em;
   overflow:hidden;
 }
-#bold{
+.bold-text{
   font-weight: bolder;
 }
 #more_info {
