@@ -1,0 +1,26 @@
+body {
+  /*background: #000 no-repeat fixed;*/
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
+blockquote{
+  line-height:1.2em;
+  height:6em;
+  overflow:hidden;
+}
+#bold{
+  font-weight: bolder;
+}
+#more_info {
+  padding-top: 25px;
+}
+.moodButtons {
+  padding: 40px 0;
+}
+.h5text {
+  padding: 0 0 15px 0;
+}

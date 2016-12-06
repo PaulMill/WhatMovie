@@ -2,19 +2,90 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <title>WhereToGo? Ask Expert:)</title>
-    <script defer
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-  <script deter src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-  <script defer src="js/main.js"></script>
+
+    <title>What movie to watch?</title>
+
+    <script defer src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+    <script defer src="js/main.js"></script>
+    <script defer src="js/api.js"></script>
   </head>
   <body>
-    <div style="text-align:center">
-      <h3><strong>Sorry, Page under construction</strong></h3>
-    </div>
+    <header id="top">
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <!-- <a href="#" class="brand-logo center"></a> -->
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+              <li><a href="#">What movies is highest ratings</a></li>
+              <li><a href="#">What movies is highest grossing</a></li>
+              <li><a href="#">What movies is highest voting</a></li>
+              <li><a class="new-release" href="#cards">Just released</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="pink-text center-align">
+        <h1>Welcome to movie chooser</h1>
+      </div>
+      <br>
+      <div class="progress grey lighten-2">
+      </div>
+      <br>
+      <div class="red-text center-align">
+        <h1>What is your MOOD today?</h1>
+      </div>
+      <div class="moodButtons container row">
+        <div class="col s6 l2 offset-l2">
+            <a href="#!" class="btn waves-effect waves-red grey lighten-1">Loved <heart></a>
+        </div>
+        <div class="col s6 l2">
+            <a href="#!" class="btn waves-effect waves-red grey lighten-1">EXCIDED :)</a>
+        </div>
+        <div class="col s6 l2">
+            <a href="#!" class="btn waves-effect waves-red grey lighten-1">Bored :(</a>
+        </div>
+        <div class="col s6 l2">
+            <a href="#!" class="btn waves-effect waves-red grey lighten-1">apathetic :| </a>
+        </div>
+      </div>
+      <div class="searchButtons container row">
+        <h5 class="center-align h5text grey-text text-darken-2">or choose by</h5>
+        <div class="col s6 l3 offset-l1">
+            <a id="movieYear" href="" class="btn waves-effect waves-red grey lighten-1">Movie by year</a>
+        </div>
+        <div class="col s6 l3 offset-l1">
+            <a href="#!" class="btn waves-effect waves-red grey lighten-1">Movie by actor</a>
+        </div>
+        <div class="col s6 l3 offset-l1">
+            <a href="#!" class="btn waves-effect waves-red grey lighten-1">Movie by genre</a>
+        </div>
+      </div>
+  </main>
+
+    <!-- <div id="sideBar">
+      <ul id="slide-out" class="side-nav fixed">
+        <li><a id="popByY" href="">Just released</a></li>
+        <li><a href="#!">Second Sidebar Link</a></li>
+        <li><button type="button" id="moreMovie" name="button">More Movie</button></li>
+      </ul>
+    </div> -->
+    <footer class="page-footer">
+         <div class="footer-copyright">
+           <div class="container">
+           © 2016 Copyright
+           <a class="grey-text text-lighten-4 right" href="#top">Go to top of page</a>
+           </div>
+         </div>
+       </footer>
   </body>
 </html>
