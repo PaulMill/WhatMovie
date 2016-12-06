@@ -68,64 +68,48 @@
     $('main').append($container);
 
 // iterraiting through years to adding HTML and creating cards
-    for (const card of years) {
+    for (const element of years) {
       const $cardCol = $('<div>').addClass('col s6 l3 offset-l1');
       const $cardContent = $('<div>').addClass('card-panel grey lighten-1');
       const $aContent = $('<a>').addClass('white-text a-big').attr({href: "#cards"});
 
 // checking if array of years contains strings and adding to .text
       if (card === "Just Released") {
-        $aContent.addClass('new-release').text(card);
+        $aContent.addClass('new-release').text(element);
       } else
       {
-        $aContent.addClass(`button${card[1]}`).text(`${card[1]} - ${card[0]}`);
+        $aContent.addClass(`button${element[1]}`).text(`${element[1]} - ${element[0]}`);
       }
 
 // appending to DOM
       $cardContent.append($aContent);
       $cardCol.append($cardContent);
       $container.append($cardCol);
+
+// creating eventListener for buttons years
       $('.new-release').on('click', (event) => {
         getDataAPI(url_now_release);
       });
       $(`.button${card[1]}`).on('click', (event) =>{
-        getDataAPI(urlApiMovie(card[1], card[0]));
+        getDataAPI(urlApiMovie(element[1], element[0]));
       });
     }
-
-// call buttons Movie by Year function
-    // $('.new-release').on('click', (event) => {
-    //   getDataAPI(url_now_release);
-    // });
-    // $('.button2015').on('click', (event) => {
-    //   getDataAPI(url_release2015_2016);
-    // });
-    // $('.button2010').on('click', (event) => {
-    //   getDataAPI(url_release2010_2014);
-    // });
-    // $('.button2000').on('click', (event) => {
-    //   getDataAPI(url_release2000_2009);
-    // });
-    // $('.button1990').on('click', (event) => {
-    //   getDataAPI(url_release1990_1999);
-    // });
-    // $('.button1970').on('click', (event) => {
-    //   getDataAPI(url_release1970_1989);
-    // });
   };
-//button Popular by year
+
+//button on landing page "Popular by year"
   $('#movieYear').on('click', (event) => {
     event.preventDefault();
     popByYear(event);
   });
 
+//function to create DOM elements for button on landing page "Popular by actor"
   const popByActor = () => {
 
 // creating and adding div with container of buttons "actors"
     const $container = $('<div>').attr({id:'actorCollection'}).addClass('container row');
     $('main').append($container);
 
-// iterraiting through actor file to adding HTML and creating collection
+// iterraiting through actors file to creating collection in DOM
     for (const card of actors) {
       const $collection = $('<ul>').addClass('collection col s6 l3 offset-l1');
 
@@ -166,6 +150,7 @@
     getDataAPI(url_now_release);
   });
 
+//function for getting data from API for movie cards
   function getDataAPI(api_url) {
     const $xhr = $.ajax({
       method: 'GET',
@@ -188,7 +173,7 @@
         //   createCard(searchResult);
         //   console.log(moreMov);
         // });
-      console.log(searchResult);
+        console.log(searchResult);
     });
   };
 })();
