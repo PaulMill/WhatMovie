@@ -1,12 +1,5 @@
 (function() {
   'use strict';
-  //for using side-bar
-  // $('.button-collapse').sideNav({
-  //      menuWidth: 200, // Default is 240
-  //      edge: 'right', // Choose the horizontal origin
-  //    }
-  //  );
-
   let searchResult = [];
 
   const createCard = () => {
@@ -61,89 +54,6 @@
     };
   };
 
-  const popByYear = () => {
-    const years = ["Just Released", [2016, 2015], [2014, 2010], [2009, 2000], [1999, 1990], [1989, 1970]];
-// creating and adding div with container of buttons "years"
-    const $container = $('<div>').attr({id:'buttons'}).addClass('container row');
-    $('main').append($container);
-
-// iterraiting through years to adding HTML and creating cards
-    for (const element of years) {
-      const $cardCol = $('<div>').addClass('col s6 l3 offset-l1');
-      const $cardContent = $('<div>').addClass('card-panel grey lighten-1');
-      const $aContent = $('<a>').addClass('white-text a-big').attr({href: "#cards"});
-
-// checking if array of years contains strings and adding to .text
-      if (card === "Just Released") {
-        $aContent.addClass('new-release').text(element);
-      } else
-      {
-        $aContent.addClass(`button${element[1]}`).text(`${element[1]} - ${element[0]}`);
-      }
-
-// appending to DOM
-      $cardContent.append($aContent);
-      $cardCol.append($cardContent);
-      $container.append($cardCol);
-
-// creating eventListener for buttons years
-      $('.new-release').on('click', (event) => {
-        getDataAPI(url_now_release);
-      });
-      $(`.button${card[1]}`).on('click', (event) =>{
-        getDataAPI(urlApiMovie(element[1], element[0]));
-      });
-    }
-  };
-
-//button on landing page "Popular by year"
-  $('#movieYear').on('click', (event) => {
-    event.preventDefault();
-    popByYear(event);
-  });
-
-//function to create DOM elements for button on landing page "Popular by actor"
-  const popByActor = () => {
-
-// creating and adding div with container of buttons "actors"
-    const $container = $('<div>').attr({id:'actorCollection'}).addClass('container row');
-    $('main').append($container);
-
-// iterraiting through actors file to creating collection in DOM
-    for (const card of actors) {
-      const $collection = $('<ul>').addClass('collection col s6 l3 offset-l1');
-
-      $container.append($collection);
-      const $colItem = $('<li>').addClass('collection-item avatar');
-
-      $collection.append($colItem);
-      const $imgActor = $('<img>').attr({
-        src: card.url_img,
-        alt: `Picture of ${card.name}`
-      }).addClass('circle');
-      const $titleActor = $('<span>').addClass('title bold-text').text(card.name);
-      const $p1 = $('<p>').text('popularity: ');
-      const $p2 = $('<p>').text('details: ');
-      const $a = $('<a>').addClass(`secondary-content button${card.id}`).attr({href: "#cards"})
-      const $icon = $('<i>').addClass('material-icons pink-text').text('thumb_up');
-
-// appending to DOM
-      $a.append($icon);
-      $colItem.append($imgActor, $titleActor, $p1, $p2, $a);
-
-// creating click event for each actor
-      $(`.button${card.id}`).on('click', (event) =>{
-        getDataAPI(card.url_api);
-      });
-    }
-  }
-  // adding eventListener for button "Movie by actor"
-  $('#movieActor').on('click', (event) => {
-    event.preventDefault();
-    popByActor(event);
-  });
-
-
 //buttons on the nav-bar
   $('.new-release').on('click', (event) => {
     getDataAPI(url_now_release);
@@ -176,12 +86,6 @@
         searchResult.push(data.results[i]);
       }
       createCard(searchResult);
-        // $('#moreMovie').on('click', (event) => {
-        //   let moreMov = [];
-        //   moreMov = searchResult.splice(0, 8);
-        //   createCard(searchResult);
-        //   console.log(moreMov);
-        // });
         console.log(searchResult);
     });
   };
