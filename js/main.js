@@ -136,7 +136,6 @@
         getDataAPI(card.url_api);
       });
     }
-
   }
   // adding eventListener for button "Movie by actor"
   $('#movieActor').on('click', (event) => {
@@ -145,13 +144,23 @@
   });
 
 
-//button on the nav-bar
+//buttons on the nav-bar
   $('.new-release').on('click', (event) => {
     getDataAPI(url_now_release);
   });
+  $('.high-voting').on('click', (event) => {
+    getDataAPI(high_voting_url_api);
+  });
+  $('.high-rating').on('click', (event) => {
+    getDataAPI(high_rating_url_api);
+  });
+  $('.high-grossing').on('click', (event) => {
+    getDataAPI(high_revenue_url_api);
+  });
+
 
 //function for getting data from API for movie cards
-  function getDataAPI(api_url) {
+  window.getDataAPI = function (api_url) {
     const $xhr = $.ajax({
       method: 'GET',
       url: api_url,
