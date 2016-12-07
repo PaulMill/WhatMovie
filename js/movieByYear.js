@@ -18,7 +18,7 @@ const popByYear = () => {
     } else
     {
       $aContent.addClass(`button${element[1]}`).text(`${element[1]} - ${element[0]}`);
-    }
+    };
 
 // appending to DOM
     $cardContent.append($aContent);

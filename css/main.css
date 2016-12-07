@@ -24,3 +24,27 @@ blockquote{
 .h5text {
   padding: 0 0 15px 0;
 }
+#actorCollection {
+
+}
+/*.video-bgr-fixed {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-size:cover;
+  background-attachment: fixed;
+  z-index: -1;
+  opacity: 0.95
+}*/
+/*video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: ;
+  background-size:cover;
+  background-attachment: fixed;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.95
+}*/

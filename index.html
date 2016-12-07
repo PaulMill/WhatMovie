@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="videoBgr/bgr.css">
+
 
     <title>What movie to watch?</title>
 
@@ -21,7 +24,12 @@
     <script defer src="js/movieByActor.js"></script>
   </head>
   <body>
-    <header id="top">
+    <!-- video background  -->
+    <!-- <video autoplay = "autoplay" loop = "loop" poster = "videoBgr/BnW.jpg" class="videoBgr">
+      <source src="videoBgr/BnW.mp4" type="video/mp4">
+      <source src="videoBgr/BnW.webm" type="video/webm">
+    </video> -->
+    <header id="top" class="video-bgr-fixed">
       <div class="navbar-fixed">
         <nav>
           <div class="nav-wrapper">
@@ -31,19 +39,19 @@
               <li><a class="high-rating" href="#">What movies is highest ratings</a></li>
               <li><a class="high-grossing" href="#">What movies is highest grossing</a></li>
               <li><a class="high-voting" href="#">What movies is highest voting</a></li>
-              <li><a class="new-release" href="#cards">Just released</a></li>
+              <li><a class="new-release-nav" href="#cards">Just released</a></li>
             </ul>
           </div>
         </nav>
       </div>
     </header>
     <main>
-      <div class="pink-text center-align">
+      <!-- <div class="video-bgr-fixed"> -->
+
+      <div class="pink-text center-align class="video-bgr-fixed"">
         <h1>Welcome to movie chooser</h1>
       </div>
       <br>
-      <div class="progress grey lighten-2">
-      </div>
       <br>
       <div class="red-text center-align">
         <h1>What is your MOOD today?</h1>
@@ -68,12 +76,13 @@
             <a id="movieYear" href="" class="btn waves-effect waves-red grey lighten-1">Movie by year</a>
         </div>
         <div class="col s6 l3 offset-l1">
-            <a id="movieActor" href="" class="btn waves-effect waves-red grey lighten-1">Movie by actor</a>
+            <a id="movieActor" href="#" class="btn waves-effect waves-red grey lighten-1">Movie by actor</a>
         </div>
         <div class="col s6 l3 offset-l1">
             <a id="movieGenre" href="#!" class="btn waves-effect waves-red grey lighten-1">Movie by genre</a>
         </div>
       </div>
+      <!-- </div> -->
     </main>
 
     <!-- <div id="sideBar">
@@ -83,7 +92,7 @@
         <li><button type="button" id="moreMovie" name="button">More Movie</button></li>
       </ul>
     </div> -->
-    <footer class="page-footer">
+    <footer class="page-footer video-bgr-fixed">
          <div class="footer-copyright">
            <div class="container">
            © 2016 Copyright

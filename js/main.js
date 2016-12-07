@@ -4,9 +4,12 @@
 
   const createCard = () => {
     $('#cards').empty();
-    const $container = $('<div>').attr({id:'cards'}).addClass('container row');
+
+    const $container = $('<div>').attr({id: 'cards'}).addClass('container row');
     $('main').append($container);
 
+
+//loop for creating DOM element of movie card
     for (const card of searchResult) {
 
       const $cardCol = $('<section>').addClass('col s12 m6');
@@ -23,39 +26,56 @@
 
       const $cardStacked = $('<div>').addClass('card-stacked');
       const $cardContent = $('<div>').addClass('card-content');
-      const $descr = $('<div>').addClass('bold-text').text(`Movie description:`);
+      const $descr = $('<div>').addClass('bold-text').text('Movie description:');
+      $cardContent.append($descr);
+      const $par = $('<p>').text(card.overview);
       const $quote = $('<blockquote>').text(card.overview);
       const $release = $('<div>').addClass('bold-text').text(`Release date: ${card.release_date}`);
-      const $fullDescr = $('<div>').attr({id:'more_info'});
-      const $moreInfo = $('<a>').addClass('waves-effect waves-green btn-flat').attr({http: `${$modal}`}).text('More info...');
+      const $moreInfo = $('<a>');
+      $moreInfo.addClass('modal-trigger waves-effect waves-green btn-flat');
+      $moreInfo.attr({
+        href: `#${card.id}`,
+        id: 'buttonMore',
+        val: `${card.id}`
+      });
 
-      $fullDescr.append($moreInfo);
-      $cardContent.append($descr, $quote, $release, $fullDescr);
+      $moreInfo.text('More info...');
+      $cardContent.append($quote, $release);
+      $moreInfo.appendTo($cardContent);
 
-      var $modal = $('<div>').addClass('modal modal-content').attr({id:'modal1'});
-      const $par = $('<p>').text(card.overview);
-      $modal.append($descr, $par);
 
       const $cardAction = $('<div>').addClass('card-action');
       const $button1 = $('<a>').attr({
-        href:`http://youtube.com`,
-        id:`YTLink`
-      }).text('trailer');
-      const $button2 = $('<a>').attr({
-        href:`http://google.com/`,
-        id:`GoogLink`
-      }).text('watch');
+        href: "",
+        val: `${card.title}`
+        }).addClass('YTLink').text('trailer');
+      const $button2 = $('<a>').attr({href: ""}).addClass('GoogLink').text('watch');
 
       $cardAction.append($button1, $button2);
       $cardStacked.append($cardContent, $cardAction);
       $cardPos.append($cardImage, $cardStacked);
       $cardCol.append($headerCard, $cardPos);
       $container.append($cardCol);
-    };
-  };
 
+//creating modal for pop window
+      const $modal = $('<div>').attr({id: `${card.id}`} ).addClass('modal');
+      const $modalContent = $('<div>').addClass('modal-content');
+      const $modalHeader = $('<h4>').text(card.title);
+      const $modalP1 = $('<p>').addClass('bold-text').text('Movie description:');
+      const $modalP2 = $('<p>').text(card.overview);
+      $modalContent.append($modalHeader, $modalP1, $modalP2, $release);
+      $modal.append($modalContent);
+      $('body').append($modal);
+
+      $('.YTLink').on('click', (event) => {
+
+      });
+    };
+// call function for showing modals
+    $('.modal').modal();
+  };
 //buttons on the nav-bar
-  $('.new-release').on('click', (event) => {
+  $('.new-release-nav').on('click', (event) => {
     getDataAPI(url_now_release);
   });
   $('.high-voting').on('click', (event) => {
