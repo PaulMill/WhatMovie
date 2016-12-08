@@ -18,11 +18,11 @@ blockquote{
 #more_info {
   padding-top: 25px;
 }
-.moodButtons {
-  padding: 40px 0;
+.mood {
+  margin: 20px 5px 15px 5px;
 }
-.h5text {
-  padding: 0 0 15px 0;
+.h5-text-main {
+  padding: 35px 0 10px 0;
 }
 #actorCollection {
 

@@ -1,5 +1,6 @@
 (function() {
   'use strict';
+  
   let searchResult = [];
 
   const createCard = () => {
@@ -44,12 +45,18 @@
       $moreInfo.appendTo($cardContent);
 
 
+
       const $cardAction = $('<div>').addClass('card-action');
       const $button1 = $('<a>').attr({
-        href: "",
+        href: `https://www.youtube.com/results?search_query=movie+trailer+${card.title}`,
+        target: "_blank",
         val: `${card.title}`
-        }).addClass('YTLink').text('trailer');
-      const $button2 = $('<a>').attr({href: ""}).addClass('GoogLink').text('watch');
+        }).text('trailer');
+      const $button2 = $('<a>').attr({
+        href: `https://www.google.com/#q=watch+movie+${card.title}`,
+        target: "_blank",
+        val: `${card.title}`
+        }).text('watch');
 
       $cardAction.append($button1, $button2);
       $cardStacked.append($cardContent, $cardAction);
@@ -63,13 +70,14 @@
       const $modalHeader = $('<h4>').text(card.title);
       const $modalP1 = $('<p>').addClass('bold-text').text('Movie description:');
       const $modalP2 = $('<p>').text(card.overview);
-      $modalContent.append($modalHeader, $modalP1, $modalP2, $release);
+      const $modalYearRelease = $('<div>').addClass('bold-text').text(`Release date: ${card.release_date}`);
+      $modalContent.append($modalHeader, $modalP1, $modalP2, $modalYearRelease);
       $modal.append($modalContent);
       $('body').append($modal);
 
-      $('.YTLink').on('click', (event) => {
-
-      });
+      // $('.YTLink').on('click', (event) => {
+      //
+      // });
     };
 // call function for showing modals
     $('.modal').modal();
