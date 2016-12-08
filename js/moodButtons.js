@@ -20,6 +20,10 @@ const moodB = ['Excited', 'Sad', 'Angry', 'InLove', 'Surprized', 'Happy', 'Unhap
     $('.moodButtons').append($buttonCol);
 
     $(`.${button}`).on('click', (event) =>{
+      $('.movie-cards').remove();
+      $('#genreCollection').remove();
+      $('#buttonsYear').remove();
+      $('#actorCollection').remove();
       let index = moodB.indexOf(button);
       getDataAPI(moodURLAPI(index));
     });

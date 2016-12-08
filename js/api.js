@@ -2,7 +2,7 @@ function urlApiMovie(data1, data2) {
   return `https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&primary_release_year=${data1}&primary_release_year=${data2}&sort_by=popularity.desc`;
 }
 
-const url_now_release = `https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&primary_release_date=2016-09-15&primary_release_date=2016-12-3&sort_by=popularity.desc`;
+const url_now_release = `https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&primary_release_date.gte=2016-09-01&sort_by=popularity.desc`;
 
 const high_voting_url_api = `https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&sort_by=vote_average.desc&vote_count.gte=10`;
 

@@ -32,24 +32,24 @@
     </video> -->
     <header id="top" class="video-bgr-fixed">
       <div class="navbar-fixed">
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a class="high-rating" href="#">Movies with high ratings</a></li>
+          <li><a class="high-grossing" href="#">Movie with high gross</a></li>
+          <li><a class="high-voting" href="#">Movies with high voting</a></li>
+          <li><a class="new-release-nav" href="#cards">Just released movie</a></li>
+        </ul>
         <nav>
           <div class="nav-wrapper">
-            <!-- <a href="#" class="brand-logo center"></a> -->
-            <ul id="nav-mobile" class="left hide-on-med-and-down nav-buttons">
-              <li><a href="index.html">Home page</a></li>
-              <li><a class="high-rating" href="#">What movies is highest ratings</a></li>
-              <li><a class="high-grossing" href="#">What movies is highest grossing</a></li>
-              <li><a class="high-voting" href="#">What movies is highest voting</a></li>
-              <li><a class="new-release-nav" href="#cards">Just released</a></li>
+            <a href="index.html" class="brand-logo left">Movie Chooser</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down nav-buttons">
+              <li><a class="dropdown-button" href="#!" data-activates="dropdown1">More choices<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
           </div>
         </nav>
       </div>
     </header>
     <main>
-      <!-- <div class="video-bgr-fixed"> -->
-
-      <div class="pink-text center-align class="video-bgr-fixed"">
+      <div class="pink-text center-align">
         <h3>Welcome to movie chooser</h3>
       </div>
       <br>
@@ -59,6 +59,8 @@
       </div>
       <div class="moodButtons container row">
       </div>
+      <br>
+      <br>
       <div class="searchButtons container row">
         <h5 class="center-align h5-text-main grey-text text-darken-2">or choose by</h5>
         <div class="col s6 l3 offset-l1">
@@ -71,23 +73,14 @@
             <a id="movieGenre" href="#!" class="btn waves-effect waves-red grey lighten-1">Movie by genre</a>
         </div>
       </div>
-      <!-- </div> -->
     </main>
-
-    <!-- <div id="sideBar">
-      <ul id="slide-out" class="side-nav fixed">
-        <li><a id="popByY" href="">Just released</a></li>
-        <li><a href="#!">Second Sidebar Link</a></li>
-        <li><button type="button" id="moreMovie" name="button">More Movie</button></li>
-      </ul>
-    </div> -->
-    <footer class="page-footer video-bgr-fixed">
-         <div class="footer-copyright">
-           <div class="container">
-           © 2016 Copyright
-           <a class="grey-text text-lighten-4 right" href="#top">Go to top of page</a>
-           </div>
-         </div>
-       </footer>
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+          © 2016 Copyright
+          <a class="grey-text text-lighten-4 right" href="#top">Go to top of page</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

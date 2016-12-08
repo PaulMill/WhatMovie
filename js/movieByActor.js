@@ -29,6 +29,7 @@
 
 // creating click event for each actor
       $(`.button${card.id}`).on('click', (event) =>{
+        $('.movie-cards').remove();
         getDataAPI(card.url_api);
       });
     }
@@ -36,5 +37,9 @@
   // adding eventListener for button "Movie by actor"
   $('#movieActor').on('click', (event) => {
     event.preventDefault();
+    $('.movie-cards').remove();
+    $('#genreCollection').remove();
+    $('#buttonsYear').remove();
+    $('#actorCollection').remove();
     popByActor(event);
   });

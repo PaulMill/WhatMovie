@@ -1,18 +1,25 @@
 (function() {
   'use strict';
+// function for for dropdown menu
+  $(".dropdown-button").dropdown();
 
   let searchResult = [];
+  let dataResult = [];
 
-  const createCard = () => {
-    // $('#cards').empty();
+  const $moreMovieButton = $('<a>').addClass('waves-effect waves-light btn-flat').attr({href: "", id: "moreMovie"}).text ('More movies');
+  const $iconButton = $('<i>').addClass('material-icons right').text('video_library');
 
-    const $container = $('<div>').attr({id: 'cards'}).addClass('container row');
+
+  const createCard = (result) => {
+
+    const $container = $('<div>').addClass('movie-cards container row');
     $('main').append($container);
 
 
 //loop for creating DOM element of movie card
-    for (const card of searchResult) {
-
+    for (const card of result) {
+      // console.log(card);
+      // console.log();
       const $cardCol = $('<section>').addClass('col s12 m6');
       const $headerCard = $('<h5>').addClass('header pink-text center-align').text(card.title);
       const $cardPos = $('<div>').addClass('card horizontal card-panel hoverable');
@@ -33,18 +40,16 @@
       const $quote = $('<blockquote>').text(card.overview);
       const $release = $('<div>').addClass('bold-text').text(`Release date: ${card.release_date}`);
       const $moreInfo = $('<a>');
+
       $moreInfo.addClass('modal-trigger waves-effect waves-green btn-flat');
       $moreInfo.attr({
         href: `#${card.id}`,
         id: 'buttonMore',
         val: `${card.id}`
       });
-
       $moreInfo.text('More info...');
       $cardContent.append($quote, $release);
       $moreInfo.appendTo($cardContent);
-
-
 
       const $cardAction = $('<div>').addClass('card-action');
       const $button1 = $('<a>').attr({
@@ -75,24 +80,56 @@
       $modal.append($modalContent);
       $('body').append($modal);
 
-      // $('.YTLink').on('click', (event) => {
-      //
-      // });
     };
+// create DOM for "More Movie" button
+    $moreMovieButton.append($iconButton);
+    $('main').append($moreMovieButton);
+// button "More Movie" eventListener
+    $('#moreMovie').on('click', (event) => {
+      event.preventDefault();
+      let nextPage = [];
+      console.log(dataResult);
+      for (let i = 0; i < dataResult.length; i++) {
+        nextPage.push(dataResult[i]);
+        dataResult.splice(i, 1);
+      }
+      createCard(nextPage);
+    });
+
 // call function for showing modals
     $('.modal').modal();
   };
 //buttons on the nav-bar
   $('.new-release-nav').on('click', (event) => {
+    event.preventDefault();
+    $('.movie-cards').remove();
+    $('#genreCollection').remove();
+    $('#buttonsYear').remove();
+    $('#actorCollection').remove();
     getDataAPI(url_now_release);
   });
   $('.high-voting').on('click', (event) => {
+    event.preventDefault();
+    $('.movie-cards').remove();
+    $('#genreCollection').remove();
+    $('#buttonsYear').remove();
+    $('#actorCollection').remove();
     getDataAPI(high_voting_url_api);
   });
   $('.high-rating').on('click', (event) => {
+    event.preventDefault();
+    $('.movie-cards').remove();
+    $('#genreCollection').remove();
+    $('#buttonsYear').remove();
+    $('#actorCollection').remove();
     getDataAPI(high_rating_url_api);
   });
   $('.high-grossing').on('click', (event) => {
+    event.preventDefault();
+    $('.movie-cards').remove();
+    $('#genreCollection').remove();
+    $('#buttonsYear').remove();
+    $('#actorCollection').remove();
     getDataAPI(high_revenue_url_api);
   });
 
@@ -109,9 +146,11 @@
       if ($xhr.status !== 200) {
         return;
       }
-      console.log(data);
+      dataResult = data.results;
+      searchResult = [];
       for (let i = 0; i < 8; i++) {
-        searchResult.push(data.results[i]);
+        searchResult.push(dataResult[i]);
+        dataResult.splice(i, 1);
       }
       createCard(searchResult);
     });

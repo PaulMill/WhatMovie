@@ -39,6 +39,7 @@
 
 // creating click event for each actor
       $(`.button${genre.id}`).on('click', (event) =>{
+        $('.movie-cards').remove();
         const url_api = `https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&with_genres=${genre.id}&sort_by=popularity.desc`
         getDataAPI(url_api);
       });
@@ -47,5 +48,9 @@
   // adding eventListener for button "Movie by actor"
   $('#movieGenre').on('click', (event) => {
     event.preventDefault();
+    $('.movie-cards').remove();
+    $('#genreCollection').remove();
+    $('#buttonsYear').remove();
+    $('#actorCollection').remove();
     getGenreData(event);
   });

@@ -1,6 +1,6 @@
 body {
   /*background: #000 no-repeat fixed;*/
-  display: flex;
+  display: block;
   min-height: 100vh;
   flex-direction: column;
 }
@@ -15,9 +15,6 @@ blockquote{
 .bold-text{
   font-weight: bolder;
 }
-#more_info {
-  padding-top: 25px;
-}
 .mood {
   margin: 20px 5px 15px 5px;
 }
@@ -27,6 +24,28 @@ blockquote{
 #actorCollection {
 
 }
+.brand-logo {
+  margin-left: 25px;
+}
+
+footer.page-footer {
+  z-index: 1;
+  margin-top: 0;
+  padding-top: 0;
+}
+#moreMovie {
+  font-size: 14px;
+  left: 85%;
+  bottom: 25px;
+}
+
+#moreMovie i {
+  margin-right: 0;
+  font-size: 2rem;
+  color: #bf5d60;
+  margin-left: 10px;
+}
+
 /*.video-bgr-fixed {
   min-width: 100%;
   min-height: 100%;

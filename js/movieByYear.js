@@ -27,6 +27,7 @@ const popByYear = () => {
 
 // creating eventListener for buttons years
     $(`.button${element[1]}`).on('click', (event) =>{
+      $('.movie-cards').remove();
       getDataAPI(urlApiMovie(element[1], element[0]));
     });
   }
@@ -34,10 +35,12 @@ const popByYear = () => {
     getDataAPI(url_now_release);
   });
 };
-
-
 //button on landing page "Popular by year"
 $('#movieYear').on('click', (event) => {
   event.preventDefault();
-  popByYear();
+  $('.movie-cards').remove();
+  $('#genreCollection').remove();
+  $('#buttonsYear').remove();
+  $('#actorCollection').remove();
+  popByYear(event);
 });
