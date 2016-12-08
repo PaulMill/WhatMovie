@@ -1,10 +1,10 @@
 (function() {
   'use strict';
-  
+
   let searchResult = [];
 
   const createCard = () => {
-    $('#cards').empty();
+    // $('#cards').empty();
 
     const $container = $('<div>').attr({id: 'cards'}).addClass('container row');
     $('main').append($container);
@@ -114,7 +114,6 @@
         searchResult.push(data.results[i]);
       }
       createCard(searchResult);
-        console.log(searchResult);
     });
   };
 })();

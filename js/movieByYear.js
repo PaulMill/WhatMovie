@@ -3,7 +3,7 @@ const years = ["Just Released", [2016, 2015], [2014, 2010], [2009, 2000], [1999,
 const popByYear = () => {
 
 // creating and adding div with container of buttons "years"
-  const $container = $('<div>').attr({id:'buttons'}).addClass('container row');
+  const $container = $('<div>').attr({id:'buttonsYear'}).addClass('container row');
   $('main').append($container);
 
 // iterraiting through years to adding HTML and creating cards
@@ -26,17 +26,18 @@ const popByYear = () => {
     $container.append($cardCol);
 
 // creating eventListener for buttons years
-    $('.new-release').on('click', (event) => {
-      getDataAPI(url_now_release);
-    });
     $(`.button${element[1]}`).on('click', (event) =>{
       getDataAPI(urlApiMovie(element[1], element[0]));
     });
   }
+  $('.new-release').on('click', (event) => {
+    getDataAPI(url_now_release);
+  });
 };
+
 
 //button on landing page "Popular by year"
 $('#movieYear').on('click', (event) => {
   event.preventDefault();
-  popByYear(event);
+  popByYear();
 });
