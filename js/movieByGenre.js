@@ -22,13 +22,13 @@
 
 // iterraiting through actors file to creating collection in DOM
     for (const genre of genres) {
-      const $collection = $('<ul>').addClass('collection col s6 l3 offset-l1');
+      const $collection = $('<ul>').addClass('genre-item collection col s6 l3 offset-l1');
 
       $container.append($collection);
       const $colItem = $('<li>').addClass('collection-item avatar');
 
       $collection.append($colItem);
-      const $icon = $('<i>').addClass('material-icons circle red').text('play_arrow');
+      const $icon = $('<i>').addClass('material-icons circle red').text('videocam');
       const $a = $('<a>').addClass(`button${genre.id}`).attr({href: "#cards"})
       $a.append($icon);
       const $titleGenre = $('<span>').addClass('title bold-text').text(genre.name);
