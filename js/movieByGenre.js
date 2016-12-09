@@ -31,7 +31,6 @@
       const $icon = $('<i>').addClass('material-icons circle red').text('play_arrow');
       const $a = $('<a>').addClass(`button${genre.id}`).attr({href: "#cards"})
       $a.append($icon);
-
       const $titleGenre = $('<span>').addClass('title bold-text').text(genre.name);
 
 // appending to DOM
@@ -43,8 +42,8 @@
         const url_api = `https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&with_genres=${genre.id}&sort_by=popularity.desc`
         getDataAPI(url_api);
       });
-    }
-  }
+    };
+  };
   // adding eventListener for button "Movie by actor"
   $('#movieGenre').on('click', (event) => {
     event.preventDefault();

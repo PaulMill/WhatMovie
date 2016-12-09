@@ -14,7 +14,7 @@ const moodB = ['Excited', 'Sad', 'Angry', 'InLove', 'Surprized', 'Happy', 'Unhap
 // iterraiting through actors file to creating collection in DOM
   for (const button of moodB) {
     const $buttonCol = $('<div>').addClass('col s6 l2 offset-l1');
-    const $a = $('<a>').addClass(`${button} btn waves-effect waves-red grey lighten-1 mood`).attr({href: '#cards'}).text(button);
+    const $a = $('<a>').addClass(`${button} btn-large waves-effect waves-red grey lighten-1 mood`).attr({href: '#cards'}).text(button);
 
     $buttonCol.append($a);
     $('.moodButtons').append($buttonCol);

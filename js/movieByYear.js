@@ -8,8 +8,8 @@ const popByYear = () => {
 
 // iterraiting through years to adding HTML and creating cards
   for (const element of years) {
-    const $cardCol = $('<div>').addClass('col s6 l3 offset-l1');
-    const $cardContent = $('<div>').addClass('card-panel grey lighten-1');
+    const $cardCol = $('<div>').addClass('col s6 l3 offset-l1 years-buttons');
+    const $cardContent = $('<div>').addClass('card-panel grey lighten-1 center');
     const $aContent = $('<a>').addClass('white-text a-big').attr({href: "#cards"});
 
 // checking if array of years contains strings and adding to .text
@@ -26,12 +26,16 @@ const popByYear = () => {
     $container.append($cardCol);
 
 // creating eventListener for buttons years
-    $(`.button${element[1]}`).on('click', (event) =>{
+
+$(`.button${element[1]}`).on('click', (event) =>{
+      event.preventDefault();
       $('.movie-cards').remove();
       getDataAPI(urlApiMovie(element[1], element[0]));
     });
   }
   $('.new-release').on('click', (event) => {
+    event.preventDefault();
+    $('.movie-cards').remove();
     getDataAPI(url_now_release);
   });
 };

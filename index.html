@@ -23,13 +23,11 @@
     <script defer src="js/movieByYear.js"></script>
     <script defer src="js/movieByActor.js"></script>
     <script defer src="js/moodButtons.js"></script>
+    <script defer src="videoBgr/bgr.js"></script>
+
+    </script>
   </head>
   <body>
-    <!-- video background  -->
-    <!-- <video autoplay = "autoplay" loop = "loop" poster = "videoBgr/BnW.jpg" class="videoBgr">
-      <source src="videoBgr/BnW.mp4" type="video/mp4">
-      <source src="videoBgr/BnW.webm" type="video/webm">
-    </video> -->
     <header id="top" class="video-bgr-fixed">
       <div class="navbar-fixed">
         <ul id="dropdown1" class="dropdown-content">
@@ -49,18 +47,23 @@
       </div>
     </header>
     <main>
-      <div class="pink-text center-align">
-        <h3>Welcome to movie chooser</h3>
-      </div>
+      <video poster="videoBgr/Merry-Xmas.jpg" id="bgvid" autoplay muted loop>
+      <source src="videoBgr/Merry-Xmas.webm" type="video/webm">
+        <source src="videoBgr/Merry-Xmas.jpg" type="video/ogv">
+      <source src="videoBgr/Merry-Xmas.mp4" type="video/mp4">
+      </video>
+
+
       <br>
       <br>
       <div class="red-text center-align">
         <h1>What is your MOOD today?</h1>
       </div>
+      <br>
+      <br>
+      <br>
       <div class="moodButtons container row">
       </div>
-      <br>
-      <br>
       <div class="searchButtons container row">
         <h5 class="center-align h5-text-main grey-text text-darken-2">or choose by</h5>
         <div class="col s6 l3 offset-l1">
@@ -76,9 +79,9 @@
     </main>
     <footer class="page-footer">
       <div class="footer-copyright">
-        <div class="container">
+        <div class="container grey-text text-lighten-3">
           © 2016 Copyright
-          <a class="grey-text text-lighten-4 right" href="#top">Go to top of page</a>
+          <a class="grey-text text-lighten-3 right" href="#top">Go to top of page</a>
         </div>
       </div>
     </footer>

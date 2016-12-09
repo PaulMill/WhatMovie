@@ -1,14 +1,14 @@
 (function() {
   'use strict';
+
 // function for for dropdown menu
   $(".dropdown-button").dropdown();
 
   let searchResult = [];
   let dataResult = [];
 
-  const $moreMovieButton = $('<a>').addClass('waves-effect waves-light btn-flat').attr({href: "", id: "moreMovie"}).text ('More movies');
+  const $moreMovieButton = $('<a>').addClass('waves-effect waves-light btn-large grey lighten-1').attr({href: "", id: "moreMovie"}).text ('More movies');
   const $iconButton = $('<i>').addClass('material-icons right').text('video_library');
-
 
   const createCard = (result) => {
 
@@ -18,10 +18,8 @@
 
 //loop for creating DOM element of movie card
     for (const card of result) {
-      // console.log(card);
-      // console.log();
-      const $cardCol = $('<section>').addClass('col s12 m6');
-      const $headerCard = $('<h5>').addClass('header pink-text center-align').text(card.title);
+      const $cardCol = $('<section>').addClass('col s12 m6 carddd');
+      const $headerCard = $('<h6>').addClass('header pink-text center-align').text(card.title);
       const $cardPos = $('<div>').addClass('card horizontal card-panel hoverable');
 
       const $cardImage = $('<div>').addClass('card-image');
@@ -76,14 +74,18 @@
       const $modalP1 = $('<p>').addClass('bold-text').text('Movie description:');
       const $modalP2 = $('<p>').text(card.overview);
       const $modalYearRelease = $('<div>').addClass('bold-text').text(`Release date: ${card.release_date}`);
+
       $modalContent.append($modalHeader, $modalP1, $modalP2, $modalYearRelease);
       $modal.append($modalContent);
       $('body').append($modal);
 
     };
+
 // create DOM for "More Movie" button
+
     $moreMovieButton.append($iconButton);
     $('main').append($moreMovieButton);
+
 // button "More Movie" eventListener
     $('#moreMovie').on('click', (event) => {
       event.preventDefault();
@@ -93,7 +95,13 @@
         nextPage.push(dataResult[i]);
         dataResult.splice(i, 1);
       }
-      createCard(nextPage);
+      console.log(dataResult);
+      if (dataResult !== []) {
+        createCard(nextPage);
+        // $moreMovieButton.addClass('disabled');
+      } else {
+        $('#moreMovie').off();
+      }
     });
 
 // call function for showing modals
@@ -141,7 +149,6 @@
       url: api_url,
       dataType: 'json'
     });
-
     $xhr.done((data) => {
       if ($xhr.status !== 200) {
         return;
