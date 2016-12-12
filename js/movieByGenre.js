@@ -3,9 +3,9 @@
 
 // function to create DOM elements for button on landing page "Popular by genre"
   const popByGenre = (genres) => {
-
 // creating and adding div with container of buttons "actors"
     const $container = $('<div>').attr({ id: 'genreCollection' }).addClass('container row');
+
     $('main').append($container);
 
 // iterraiting through actors file to creating collection in DOM
@@ -26,11 +26,11 @@
       $colItem.append($a, $titleGenre);
 
 // creating click event for each actor
-      $(`.button${genre.id}`).on('click', () =>{
+      $(`.button${genre.id}`).on('click', () => {
         $('.movie-cards').remove();
-        const url_api = `https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&with_genres=${genre.id}&sort_by=popularity.desc`
+        const urlApi = `https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&with_genres=${genre.id}&sort_by=popularity.desc`;
 
-        getDataAPI(url_api);
+        getDataAPI(urlApi);
       });
     }
   };
@@ -47,7 +47,7 @@
         return;
       }
       popByGenre(data.genres);
-    })
+    });
   };
 
   // adding eventListener for button "Movie by actor"

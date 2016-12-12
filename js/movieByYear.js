@@ -4,7 +4,6 @@
   const years = ['Just Released', [2016, 2015], [2014, 2010], [2009, 2000], [1999, 1990], [1989, 1970]];
 
   const popByYear = () => {
-
 // creating and adding div with container of buttons "years"
     const $container = $('<div>').attr({
       id: 'buttonsYear'
@@ -20,12 +19,12 @@
         href: '#cards' });
 
 // checking if array of years contains strings and adding to .text
-    if (element === 'Just Released') {
-      $aContent.addClass('new-release').text(element);
-    }
+      if (element === 'Just Released') {
+        $aContent.addClass('new-release').text(element);
+      }
       else {
-      $aContent.addClass(`button${element[1]}`).text(`${element[1]} - ${element[0]}`);
-    }
+        $aContent.addClass(`button${element[1]}`).text(`${element[1]} - ${element[0]}`);
+      }
 
 // appending to DOM
       $cardContent.append($aContent);
@@ -34,7 +33,7 @@
 
 // creating eventListener for buttons years
 
-      $(`.button${element[1]}`).on('click', () =>{
+      $(`.button${element[1]}`).on('click', () => {
         event.preventDefault();
         $('.movie-cards').remove();
         getDataAPI(urlApiMovie(element[1], element[0]));
@@ -43,7 +42,7 @@
     $('.new-release').on('click', (event) => {
       event.preventDefault();
       $('.movie-cards').remove();
-      getDataAPI(url_now_release);
+      getDataAPI(urlNowRelease);
     });
   };
 

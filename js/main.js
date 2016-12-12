@@ -68,7 +68,7 @@
       $container.append($cardCol);
 
 // creating modal for pop window
-      const $modal = $('<div>').attr({id: `${card.id}`} ).addClass('modal');
+      const $modal = $('<div>').attr({ id: `${card.id}` }).addClass('modal');
       const $modalContent = $('<div>').addClass('modal-content');
       const $modalHeader = $('<h4>').text(card.title);
       const $modalP1 = $('<p>').addClass('bold-text').text('Movie description:');
@@ -90,12 +90,10 @@
       event.preventDefault();
       let nextPage = [];
 
-      console.log(dataResult);
       for (let i = 0; i < dataResult.length; i++) {
         nextPage.push(dataResult[i]);
         dataResult.splice(i, 1);
       }
-      console.log(dataResult);
       if (dataResult !== []) {
         createCard(nextPage);
 
@@ -117,7 +115,7 @@
     $('#genreCollection').remove();
     $('#buttonsYear').remove();
     $('#actorCollection').remove();
-    getDataAPI(url_now_release);
+    getDataAPI(urlNowRelease);
   });
   $('.high-voting').on('click', (event) => {
     event.preventDefault();
@@ -125,7 +123,7 @@
     $('#genreCollection').remove();
     $('#buttonsYear').remove();
     $('#actorCollection').remove();
-    getDataAPI(high_voting_url_api);
+    getDataAPI(highVotingUrlApi);
   });
   $('.high-rating').on('click', (event) => {
     event.preventDefault();
@@ -133,7 +131,7 @@
     $('#genreCollection').remove();
     $('#buttonsYear').remove();
     $('#actorCollection').remove();
-    getDataAPI(high_rating_url_api);
+    getDataAPI(highRatingUrlApi);
   });
   $('.high-grossing').on('click', (event) => {
     event.preventDefault();
@@ -141,16 +139,17 @@
     $('#genreCollection').remove();
     $('#buttonsYear').remove();
     $('#actorCollection').remove();
-    getDataAPI(high_revenue_url_api);
+    getDataAPI(highRevenueUrlApi);
   });
 
 // function for getting data from API for movie cards
-  window.getDataAPI = function(api_url) {
+  window.getDataAPI = function(apiUrl) {
     const $xhr = $.ajax({
       method: 'GET',
-      url: api_url,
+      url: apiUrl,
       dataType: 'json'
     });
+
     $xhr.done((data) => {
       if ($xhr.status !== 200) {
         return;

@@ -6,15 +6,15 @@
 
 // getting API for mood buttons
   const moodURLAPI = (index) => {
-    let url_api = 'https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&sort_by=popularity.desc';
+    let urlApi = 'https://api.themoviedb.org/3/discover/movie?api_key=a7a6367c472249d9e3def2c5b9bb046e&sort_by=popularity.desc';
 
 // iterraiting through genre ID(moodArr) array to create API url
     for (const inner of moodArr[index]) {
       const searchStr = `&with_genres=${inner}`;
-      url_api = url_api + searchStr;
+      urlApi = urlApi + searchStr;
     }
 
-    return url_api;
+    return urlApi;
   };
 
 // iterraiting through array of mood buttons for creating buttons and click event for this buttons.

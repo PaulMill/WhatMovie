@@ -17,7 +17,7 @@
 
       $collection.append($colItem);
       const $imgActor = $('<img>').attr({
-        src: card.url_img,
+        src: card.urlImg,
         alt: `Picture of ${card.name}`
       }).addClass('circle');
       const $titleActor = $('<span>').addClass('title bold-text').text(card.name);
@@ -32,7 +32,7 @@
 // creating click event for each actor
       $(`.button${card.id}`).on('click', (event) => {
         $('.movie-cards').remove();
-        getDataAPI(card.url_api);
+        getDataAPI(card.urlApi);
       });
     }
   }
