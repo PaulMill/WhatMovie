@@ -1,6 +1,11 @@
-main {
-    flex: 1 0 auto;
-}
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+ main {
+   flex: 1 0 auto;
+ }
 blockquote{
   line-height:1.2em;
   height:6em;
@@ -52,7 +57,7 @@ footer.page-footer {
 }
 nav {
   background-color: #6d6969;
-  opacity: 0.65;
+  opacity: 0.75;
 }
 h1 {
   font-weight: 600;

@@ -1,8 +1,11 @@
-//function to create DOM elements for button on landing page "Popular by actor"
+(function() {
+  'use strict';
+
+// function to create DOM elements for button on landing page "Popular by actor"
   const popByActor = () => {
 
 // creating and adding div with container of buttons "actors"
-    const $container = $('<div>').attr({id:'actorCollection'}).addClass('container row');
+    const $container = $('<div>').attr({ id: 'actorCollection' }).addClass('container row');
     $('main').append($container);
 
 // iterraiting through actors file to creating collection in DOM
@@ -27,12 +30,13 @@
       $colItem.append($imgActor, $titleActor, $p2, $a);
 
 // creating click event for each actor
-      $(`.button${card.id}`).on('click', (event) =>{
+      $(`.button${card.id}`).on('click', (event) => {
         $('.movie-cards').remove();
         getDataAPI(card.url_api);
       });
     }
   }
+
   // adding eventListener for button "Movie by actor"
   $('#movieActor').on('click', (event) => {
     event.preventDefault();
@@ -42,3 +46,4 @@
     $('#actorCollection').remove();
     popByActor(event);
   });
+})();

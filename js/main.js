@@ -2,21 +2,23 @@
   'use strict';
 
 // function for for dropdown menu
-  $(".dropdown-button").dropdown();
+  $('.dropdown-button').dropdown();
 
   let searchResult = [];
   let dataResult = [];
 
-  const $moreMovieButton = $('<a>').addClass('waves-effect waves-light btn-large grey lighten-1').attr({href: "", id: "moreMovie"}).text ('More movies');
+  const $moreMovieButton = $('<a>').addClass('waves-effect waves-light btn-large grey lighten-1').attr({
+    href: '',
+    id: 'moreMovie'
+  }).text('More movies');
   const $iconButton = $('<i>').addClass('material-icons right').text('video_library');
 
   const createCard = (result) => {
-
     const $container = $('<div>').addClass('movie-cards container row');
+
     $('main').append($container);
 
-
-//loop for creating DOM element of movie card
+// loop for creating DOM element of movie card
     for (const card of result) {
       const $cardCol = $('<section>').addClass('col s12 m6 carddd');
       const $headerCard = $('<h6>').addClass('header pink-text center-align').text(card.title);
@@ -24,8 +26,8 @@
 
       const $cardImage = $('<div>').addClass('card-image');
       const $image = $('<img>').attr({
-        src:`https://image.tmdb.org/t/p/w500${card.poster_path}`,
-        alt:`Poster ${card.poster_path}`
+        src: `https://image.tmdb.org/t/p/w500${card.poster_path}`,
+        alt: `Poster ${card.poster_path}`
       });
 
       $cardImage.append($image);
@@ -33,8 +35,8 @@
       const $cardStacked = $('<div>').addClass('card-stacked');
       const $cardContent = $('<div>').addClass('card-content');
       const $descr = $('<div>').addClass('bold-text').text('Movie description:');
+
       $cardContent.append($descr);
-      const $par = $('<p>').text(card.overview);
       const $quote = $('<blockquote>').text(card.overview);
       const $release = $('<div>').addClass('bold-text').text(`Release date: ${card.release_date}`);
       const $moreInfo = $('<a>');
@@ -52,14 +54,12 @@
       const $cardAction = $('<div>').addClass('card-action');
       const $button1 = $('<a>').attr({
         href: `https://www.youtube.com/results?search_query=movie+trailer+${card.title}`,
-        target: "_blank",
-        val: `${card.title}`
-        }).text('trailer');
+        target: '_blank',
+        val: `${card.title}` }).text('trailer');
       const $button2 = $('<a>').attr({
         href: `https://www.google.com/#q=watch+movie+${card.title}`,
-        target: "_blank",
-        val: `${card.title}`
-        }).text('watch');
+        target: '_blank',
+        val: `${card.title}` }).text('watch');
 
       $cardAction.append($button1, $button2);
       $cardStacked.append($cardContent, $cardAction);
@@ -67,7 +67,7 @@
       $cardCol.append($headerCard, $cardPos);
       $container.append($cardCol);
 
-//creating modal for pop window
+// creating modal for pop window
       const $modal = $('<div>').attr({id: `${card.id}`} ).addClass('modal');
       const $modalContent = $('<div>').addClass('modal-content');
       const $modalHeader = $('<h4>').text(card.title);
@@ -78,8 +78,7 @@
       $modalContent.append($modalHeader, $modalP1, $modalP2, $modalYearRelease);
       $modal.append($modalContent);
       $('body').append($modal);
-
-    };
+    }
 
 // create DOM for "More Movie" button
 
@@ -90,6 +89,7 @@
     $('#moreMovie').on('click', (event) => {
       event.preventDefault();
       let nextPage = [];
+
       console.log(dataResult);
       for (let i = 0; i < dataResult.length; i++) {
         nextPage.push(dataResult[i]);
@@ -98,8 +98,10 @@
       console.log(dataResult);
       if (dataResult !== []) {
         createCard(nextPage);
+
         // $moreMovieButton.addClass('disabled');
-      } else {
+      }
+      else {
         $('#moreMovie').off();
       }
     });
@@ -107,7 +109,8 @@
 // call function for showing modals
     $('.modal').modal();
   };
-//buttons on the nav-bar
+
+// buttons on the nav-bar
   $('.new-release-nav').on('click', (event) => {
     event.preventDefault();
     $('.movie-cards').remove();
@@ -141,9 +144,8 @@
     getDataAPI(high_revenue_url_api);
   });
 
-
-//function for getting data from API for movie cards
-  window.getDataAPI = function (api_url) {
+// function for getting data from API for movie cards
+  window.getDataAPI = function(api_url) {
     const $xhr = $.ajax({
       method: 'GET',
       url: api_url,
