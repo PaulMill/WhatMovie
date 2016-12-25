@@ -96,8 +96,6 @@
       }
       if (dataResult !== []) {
         createCard(nextPage);
-
-        // $moreMovieButton.addClass('disabled');
       }
       else {
         $('#moreMovie').off();
