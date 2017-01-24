@@ -7,11 +7,15 @@
   let searchResult = [];
   let dataResult = [];
 
-  const $moreMovieButton = $('<a>').addClass('waves-effect waves-light btn-large grey lighten-1').attr({
-    href: '',
-    id: 'moreMovie'
-  }).text('More movies');
-  const $iconButton = $('<i>').addClass('material-icons right').text('video_library');
+  const $moreMovieButton = $('<a>')
+    .addClass('waves-effect waves-light btn-large grey lighten-1')
+    .attr({
+      href: '',
+      id: 'moreMovie'
+    }).text('More movies');
+  const $iconButton = $('<i>')
+    .addClass('material-icons right')
+    .text('video_library');
 
   const createCard = (result) => {
     const $container = $('<div>').addClass('movie-cards container row');
@@ -21,8 +25,11 @@
 // loop for creating DOM element of movie card
     for (const card of result) {
       const $cardCol = $('<section>').addClass('col s12 m6 carddd');
-      const $headerCard = $('<h6>').addClass('header pink-text center-align').text(card.title);
-      const $cardPos = $('<div>').addClass('card horizontal card-panel hoverable');
+      const $headerCard = $('<h6>')
+      .addClass('header pink-text center-align')
+      .text(card.title);
+      const $cardPos = $('<div>')
+      .addClass('card horizontal card-panel hoverable');
 
       const $cardImage = $('<div>').addClass('card-image');
       const $image = $('<img>').attr({
@@ -34,11 +41,15 @@
 
       const $cardStacked = $('<div>').addClass('card-stacked');
       const $cardContent = $('<div>').addClass('card-content');
-      const $descr = $('<div>').addClass('bold-text').text('Movie description:');
+      const $descr = $('<div>')
+      .addClass('bold-text')
+      .text('Movie description:');
 
       $cardContent.append($descr);
       const $quote = $('<blockquote>').text(card.overview);
-      const $release = $('<div>').addClass('bold-text').text(`Release date: ${card.release_date}`);
+      const $release = $('<div>')
+      .addClass('bold-text')
+      .text(`Release date: ${card.release_date}`);
       const $moreInfo = $('<a>');
 
       $moreInfo.addClass('modal-trigger waves-effect waves-green btn-flat');
@@ -71,9 +82,13 @@
       const $modal = $('<div>').attr({ id: `${card.id}` }).addClass('modal');
       const $modalContent = $('<div>').addClass('modal-content');
       const $modalHeader = $('<h4>').text(card.title);
-      const $modalP1 = $('<p>').addClass('bold-text').text('Movie description:');
+      const $modalP1 = $('<p>')
+      .addClass('bold-text')
+      .text('Movie description:');
       const $modalP2 = $('<p>').text(card.overview);
-      const $modalYearRelease = $('<div>').addClass('bold-text').text(`Release date: ${card.release_date}`);
+      const $modalYearRelease = $('<div>')
+      .addClass('bold-text')
+      .text(`Release date: ${card.release_date}`);
 
       $modalContent.append($modalHeader, $modalP1, $modalP2, $modalYearRelease);
       $modal.append($modalContent);
@@ -81,24 +96,26 @@
     }
 
 // create DOM for "More Movie" button
-
+    $moreMovieButton.remove();
     $moreMovieButton.append($iconButton);
     $('main').append($moreMovieButton);
 
-// button "More Movie" eventListener
+    // button "More Movie" eventListener
     $('#moreMovie').on('click', (event) => {
       event.preventDefault();
-      let nextPage = [];
 
       for (let i = 0; i < dataResult.length; i++) {
-        nextPage.push(dataResult[i]);
         dataResult.splice(i, 1);
       }
-      if (dataResult !== []) {
-        createCard(nextPage);
+      console.log('before it statement' + dataResult);
+      if (dataResult.length) {
+        createCard(dataResult);
       }
       else {
-        $('#moreMovie').off();
+        $moreMovieButton.prop('disabled', true)
+        .addClass('btn-large disabled')
+        .text('No more movies');
+        Materialize.toast('Try to decide other options', 5000, 'rounded');
       }
     });
 
